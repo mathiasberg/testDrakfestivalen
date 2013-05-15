@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/style.css" />
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/jquery.mobile-1.3.1.min.js"></script>
+<script src="cordova-2.6.0.js"></script>
 
 </head>
 <body>
@@ -32,6 +33,47 @@
 		<div data-role="content">
 			<a data-role="button" data-icon="arrow-l" href="#" data-rel="back" data-inline="true">Tillbaka</a>
 			<h1>Program sidan2</h1>
+			
+			<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+				<h2>Onsdag, Augusti 7, 2013</h2>
+				<ul data-role="listview" data-theme="d" data-divider-theme="d" data-inset="true">
+					
+					<li><a href="index.html">
+							<h3>Lilla drakloppet</h3>
+							<p>
+								<strong>bla bla bla adfa asdf sdfl asdfa sdfsd fsadf</strong>
+							</p>
+							<p></p>
+							<p class="ui-li-aside"><strong>17:30</strong></p>
+					</a></li>
+					<li><a href="index.html">
+							<h3>Röda draken (Start på Norra Berget!)</h3>
+							<p>
+								<strong>bla bla bla adfa asdf sdfl asdfa sdfsd fsadf</strong>
+							</p>
+							<p></p>
+							<p class="ui-li-aside"><strong>18:30</strong></p>
+					</a></li>
+					
+				</ul>
+			</div>
+
+
+			<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
+				<h2>Torsdag, Augusti 8, 2013</h2>
+				<ul data-role="listview" data-theme="d" data-divider-theme="d"  data-inset="true">
+					
+					<li><a href="index.html">
+							<h2>Festivalområdet öppnar.</h2>
+							<p>
+								<strong>Lunchservering i våra mat och öltält. Axels nöjesfält öppnar sina attraktioner alla åksugna.</strong>
+							</p>
+							<p></p>
+							<p class="ui-li-aside"><strong>11:00</strong></p>
+					</a></li>
+				</ul>
+			</div>
+
 			<ul id="programList" data-role="listview" data-filter="false"></ul>
 
 		</div>
@@ -46,9 +88,9 @@
 		
 		<script>
 		
-			var serviceURL = "http://tagquiz.mathiasberg.se/testjquery/www/";
+			var serviceURL = "http://tagquiz.mathiasberg.se/df/";
 			var proglist;
-			var mainloaded = false;
+			var mainloaded = true;
 
 			//Start loading spinner. sets to hide when ajax is finished
 			//Triggered on the "toPage" after the transition animation has completed.
@@ -66,8 +108,8 @@
 			//Triggered on the page being initialized, after initialization occurs. Dokument is ready
 			$('#programListPage').bind('pageinit', function(event) {
 				console.log('pageinit');
-				ajaxCallPrograms();
-
+				//ajaxCallPrograms();
+				$.mobile.loading('hide');
 			});
 
 			//Ajax call. populate program list
