@@ -90,6 +90,7 @@
 			 
 			<p id="collPrograms"></p>
 			
+
 		</div>
 		<!-- /content -->
 
@@ -105,6 +106,7 @@
 			var serviceURL = "http://tagquiz.mathiasberg.se/df/";
 			var prgArr;
 			var mainloaded = true;
+
 
 
 			var prgObj =  {"id":86,"artistId":86,"title":"Lilla drakloppet","beskrivning":"Lilla drakloppet beskrivning","dag":"2013-08-07","start":"17:30:00","stop":"20:00:00"};
@@ -140,9 +142,12 @@
 			/*$('#programListPage').bind('pageshow', function(event) {
 				console.log('pageinit');
 				//ajaxCallPrograms();
+
 				pushToList();
 				$.mobile.loading('hide');
 			});*/
+
+			});
 
 			//Ajax call. populate program list
 			function ajaxCallPrograms() {
