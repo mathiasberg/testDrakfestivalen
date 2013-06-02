@@ -11,68 +11,133 @@
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/jquery.mobile-1.3.1.min.js"></script>
 
-<script>
-	//alert("$.mobile.version " + $.mobile.version);
-</script>
-
 
 </head>
 <body>
 
-	<div data-role="page" data-theme="c" data-header-theme="c" data-content-theme="c">
-
-		<div data-role="header" >
+	<div data-role="page" data-theme="c" >
+	  
+	<style>
+		
+		/*.nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+		.nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+		#chat .ui-icon { background:  url(../../_assets/img/glyphish-icons/09-chat2.png) 50% 50% no-repeat; background-size: 24px 22px; }
+		#email .ui-icon { background:  url(../../_assets/img/glyphish-icons/18-envelope.png) 50% 50% no-repeat; background-size: 24px 16px;  }
+		#login .ui-icon { background:  url(../../_assets/img/glyphish-icons/30-key.png) 50% 50% no-repeat;  background-size: 12px 26px; }
+		#beer .ui-icon { background:  url(img/beer-mug.png) 50% 50% no-repeat transparent;  background-size: 22px 27px; }
+		#coffee .ui-icon { background:  url(../../_assets/img/glyphish-icons/100-coffee.png) 50% 50% no-repeat;  background-size: 20px 24px; }
+		#skull .ui-icon { background:  url(../../_assets/img/glyphish-icons/21-skull.png) 50% 50% no-repeat transparent;  background-size: 22px 24px; }
+		.ui-icon { margin:20px; }
+		*/
+		.df-ui-bar {
+			height:130px;
+		}
+	</style>
+	
+		<div data-role="panel" id="menuDiv"  data-animate="true">
+			<!-- panel content goes here -->
+			<ul data-role='listview' data-icon="false">
+				<li data-theme='a'>Drakfestivalen meny</li>
+				<li><a href="index.html" >Start</a></li>
+				<li><a href="program.html" >Program</a></li>
+				<li><a href="drakkampen_startlista.html" >Startlista</a></li>
+				<li><a href="drakkampen_resultat.html" >Resultat</a></li>
+				<li><a href="laglista.html" >Lag</a></li>
+				<li><a href="artistlista.html" >Artister</a></li>
+				<li><a href="info.html" >Information</a></li>
+			</ul>
+		</div>
+		<!-- /panel -->
+		
+		<div data-role="header">
+		
+			<img src="img/df_logo.jpg" width="100%" height=""/>
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 20%"><a href="#menuDiv" data-role="button" data-icon="bars" data-iconpos="notext" data-inline="true"></a></li>
+					<li style="width: 80%"><a href="#"></a></li>
+				</ul>
+			</div>
+			<!-- 
 			<div data-role="navbar">
 				<ul>
 					<li style="width:20%;">
-						<a style="background: transparent;" href="index.html" data-iconpos="none" ><img data-theme="c" alt="" src="img/icon_Dragon_Head_32.png"></a>
+						<a style="background: transparent;" href="#mypanel" data-iconpos="none" ><img src="img/icon_Dragon_Head_32.png"></a>
 					</li>
 					<li style="width:80%; text-align: center;"><h3>Drakfestivalen</h3></li>
 				</ul>
 			</div>
+			 -->
 			<!-- /navbar -->
 		</div>
 		<!-- /header -->
+		<!-- <a href="#mypanel" data-role="button" data-icon="bars" data-iconpos="notext" data-inline="true"></a> -->
+		<!--<a href="#mypanel" id="beer" data-icon="custom" style="background: transparent;"></a>
+						  <a href="#mypanel" style="background: transparent;" data-role="button" data-icon="bars" data-iconpos="notext" data-inline="true"></a>-->
+			
+			<!--  <div data-role="navbar" >
+				  
+				<ul>
+					<li style="width: 20%; height:100%; background-color: blue">
+						
+						<a data-inline="true" style="background: transparent;" href="#mypanel" data-iconpos="none" ><img data-theme="c" src="img/beer-mug.png"></a>
+					</li>
+					<li style="width: 80%"><img src="img/df_logo.jpg" width="100%" height=""/></li>
+				</ul>
+				
+			</div>-->
+			<!-- /navbar -->
+
+		<!-- /header -->
 
 		<div data-role="content">
+			
+			
+			
 			<div class="ui-grid-a">
 				<div class="ui-block-a">
-					<div class="ui-bar ui-bar-c" style="height:120px">
+					<div class="ui-bar df-ui-bar" >
 						<a href="justnu.html" >
-							<img src="css/images/icon-calendar.png" />
+							<img src="img/ruta_bakgrund.png" />
 						</a>
+						
+						<!-- <div id="justnu" style="width:120px;height:120px;background-image:img/ruta_bakgrund.png; text-align: center;">Just nu</div>-->
 					</div>
 				</div>
 				<div class="ui-block-b">
-					<div class="ui-bar ui-bar-c" style="height:120px">
-						<a href="program.html"  >
-							<img src="css/images/icon-calendar.png" />
+					<div class="ui-bar df-ui-bar" >
+						<a href="program.html" >
+							<img src="img/ruta_bakgrund_prg.png" />
 						</a>
+						<!-- <a href="program.html" data-inline="true" style="width:120px;height:120px;">
+							Program
+						</a> -->
+						<!--  <div id="program" style="width:80px;height:80px;background-color:blue;">Program</div> -->
 					</div>
 				</div>
 				<div class="ui-block-a">
-					<div class="ui-bar ui-bar-c" style="height:120px">
-						<a href="drakkampen.html" data-inline="true" >
-							Drakkampen
+					<div class="ui-bar df-ui-bar">
+						<a href="drakkampen.html" >
+							<img src="img/ruta_bakgrund_bat.png" />
 						</a>
 					</div>
 				</div>
 				<div class="ui-block-b">
-					<div class="ui-bar ui-bar-c" style="height:120px">
-						<a href="karta.html" data-inline="true" >
-							Karta
+					<div class="ui-bar df-ui-bar">
+						<a href="karta.html" >
+							<img src="img/ruta_bakgrund_karta.png" />
 						</a>
 					</div>
 				</div>
 				<div class="ui-block-b">
-					<div class="ui-bar ui-bar-c" style="height:120px">
+					<div class="ui-bar df-ui-bar">
 						<a href="artistlista.html" data-inline="true" >
 							Artister
 						</a>
 					</div>
 				</div>
 				<div class="ui-block-b">
-					<div class="ui-bar ui-bar-c" style="height:120px">
+					<div class="ui-bar df-ui-bar" >
 						<a href="info.html" data-inline="true" >
 							Info
 						</a>
@@ -90,8 +155,18 @@
 		</div>
 		 -->
 		<!-- /footer -->
+		
+		<script>
+			$('#justnu').click(function(){
+				$.mobile.changePage( "justnu.html", { transition: "fade"} );
+			});
+			$('#program').click(function(){
+				$.mobile.changePage( "program.html", { transition: "fade"} );
+			});
+		</script>
 	</div>
+	
 	<!-- /page -->
-
+	
 </body>
 </html>

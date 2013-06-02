@@ -19,6 +19,8 @@
 	<div id="justnupage" data-role="page" data-theme="c" data-header-theme="c" data-content-theme="c" >
 
 		<div data-role="header">
+			<img src="img/df_logo.jpg" width="100%" height=""/>
+			<!-- 
 			<div data-role="navbar">
 				<ul>
 					<li style="width:20%;">
@@ -27,16 +29,23 @@
 					<li style="width:80%; text-align: center;"><h3>Just nu</h3></li>
 				</ul>
 			</div>
+			 -->
 			<!-- /navbar -->
 		</div>
 		<!-- /header -->
 
 		<div data-role="content" >
-			<a data-role="button" data-icon="arrow-l" href="#" data-rel="back" data-inline="true">Tillbaka</a>
-			
-			<h1>Just nu sidan</h1>
-			
-			
+			<a data-role="button" data-theme="c" data-icon="arrow-l" href="#" data-rel="back" data-inline="true">Tillbaka</a>
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" class="ui-btn-active">One</a></li>
+					<li><a href="#">Two</a></li>
+				</ul>
+			</div>
+			<!-- /navbar -->
+
+
 		</div>
 		<!-- /content -->
 
@@ -46,7 +55,9 @@
 		</div>
 		 -->
 		<!-- /footer -->
-		
+		<script>
+			//console.log('------- ' + $data('testparamid'));
+		</script>
 	</div>
 	<!-- /page -->
 	

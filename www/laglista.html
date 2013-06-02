@@ -13,16 +13,38 @@
 </head>
 <body>
 
-	<div data-role="page" data-theme="c" data-header-theme="c" data-content-theme="c">
+	<div id="teamListPage" data-role="page" data-theme="c"  data-content-theme="c">
 
-		<div data-role="header" >
-			<h1>Laglista</h1>
+		<div data-role="panel" id="menuDiv"  data-animate="true">
+			<!-- panel content goes here -->
+			<ul data-role='listview' data-icon="false">
+				<li data-theme='a'>Drakfestivalen meny</li>
+				<li><a href="index.html" >Start</a></li>
+				<li><a href="program.html" >Program</a></li>
+				<li><a href="drakkampen_startlista.html" >Startlista</a></li>
+				<li><a href="drakkampen_resultat.html" >Resultat</a></li>
+				<li><a href="laglista.html" >Lag</a></li>
+				<li><a href="artistlista.html" >Artister</a></li>
+				<li><a href="info.html" >Information</a></li>
+			</ul>
+		</div>
+		<!-- /panel -->
+		
+		<div data-role="header">
+			<img src="img/df_logo.jpg" width="100%" height=""/>
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 20%"><a href="#menuDiv" data-role="button" data-icon="bars" data-iconpos="notext" data-inline="true"></a></li>
+					<li style="width: 80%"><a href="#"></a></li>
+				</ul>
+			</div>
+			
 		</div>
 		<!-- /header -->
 
 		<div data-role="content">
-			<h1>Laglista sidan</h1>
-
+			
+			<ul id="teamList" data-role="listview" data-filter="true"></ul>
 		</div>
 		<!-- /content -->
 
@@ -32,6 +54,74 @@
 		</div>
 		 -->
 		<!-- /footer -->
+		
+		<script>
+		
+			var serviceURL = "http://tagquiz.mathiasberg.se/df/";
+			var teamArr;
+			var mainloaded = false;
+
+			//id , namn , beskrivning
+			var teamObj1 =  {"id":86,"namn":"Capgemini","beskrivning":"Capgemini sundsvall1","bild":""};
+			var teamObj2 =  {"id":80,"namn":"CGI","beskrivning":"Capgemini sundsvall2","bild":""};
+			var teamObj3 =  {"id":88,"namn":"Sogeti","beskrivning":"Capgemini sundsvall3","bild":""};
+			var teamObj4 =  {"id":89,"namn":"Softtronic","beskrivning":"Capgemini sundsvall4","bild":""};
+			
+			teamArr = [teamObj1, teamObj2, teamObj3, teamObj4];
+			
+			//Start loading spinner. sets to hide when ajax is finished
+			//Triggered on the "toPage" after the transition animation has completed.
+			//see http://jquerymobile.com/demos/1.2.1/docs/api/events.html
+
+			$('#teamListPage').on('pageshow', function(event) { //Workaround to show page loading on initial page load
+				console.log('pageshow');
+				if (!mainloaded) {
+					$.mobile.loading('show');
+				}
+
+			});
+
+			
+			//Triggered on the page being initialized, after initialization occurs. Dokument is ready
+			$('#teamListPage').bind('pageinit', function(event) {
+				console.log('pageinit');
+				//ajaxCall();
+				
+				pushToList();
+			});
+
+			//Ajax call. populate program list
+			function ajaxCall() {
+				console.log('ajaxCallPrograms');
+				$.getJSON(serviceURL + 'teamlist.php', function(data) {
+					proglist = data;
+					mainloaded = true;
+					$.mobile.loading('hide');
+					//populerar li element
+					pushToList();
+				});
+			}
+
+			//Populate the li list element
+			function pushToList() {
+				console.log('pushToList');
+				$('#teamList li').remove();
+				$.each(teamArr,
+						function(index, team) {
+							$('#teamList').append(
+									'<li><a href="lag.html?id='
+											+ team.id + '">'
+											+ '<h4>' + team.namn
+											+ '</h4>' + '</a></li>');
+						});
+				$.mobile.loading('hide');
+				mainloaded = true;
+				$('#teamList').listview('refresh');
+
+			}
+		</script>
+		
+		
 	</div>
 	<!-- /page -->
 

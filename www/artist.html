@@ -15,8 +15,30 @@
 
 	<div data-role="page" data-theme="c" data-header-theme="c" data-content-theme="c">
 
-		<div data-role="header" >
-			<h1>Artist</h1>
+		<div data-role="panel" id="menuDiv"  data-animate="true">
+			<!-- panel content goes here -->
+			<ul data-role='listview' data-icon="false">
+				<li data-theme='a'>Drakfestivalen meny</li>
+				<li><a href="index.html" >Start</a></li>
+				<li><a href="program.html" >Program</a></li>
+				<li><a href="drakkampen_startlista.html" >Startlista</a></li>
+				<li><a href="drakkampen_resultat.html" >Resultat</a></li>
+				<li><a href="laglista.html" >Lag</a></li>
+				<li><a href="artistlista.html" >Artister</a></li>
+				<li><a href="info.html" >Information</a></li>
+			</ul>
+		</div>
+		<!-- /panel -->
+		
+		<div data-role="header">
+			<img src="img/df_logo.jpg" width="100%" height=""/>
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 20%"><a href="#menuDiv" data-role="button" data-icon="bars" data-iconpos="notext" data-inline="true"></a></li>
+					<li style="width: 80%"><a href="#"></a></li>
+				</ul>
+			</div>
+			
 		</div>
 		<!-- /header -->
 

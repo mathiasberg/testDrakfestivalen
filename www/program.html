@@ -14,26 +14,82 @@
 </head>
 <body>
 
-	<div id="programListPage" data-role="page" data-theme="c" data-header-theme="c" data-content-theme="c">
+	<div id="programListPage" data-role="page" data-theme="c"  data-content-theme="c">
 
+		<div data-role="panel" id="menuDiv"  data-animate="true">
+			<!-- panel content goes here -->
+			<ul data-role='listview' data-icon="false">
+				<li data-theme='a'>Drakfestivalen meny</li>
+				<li><a href="index.html" >Start</a></li>
+				<li><a href="program.html" >Program</a></li>
+				<li><a href="drakkampen_startlista.html" >Startlista</a></li>
+				<li><a href="drakkampen_resultat.html" >Resultat</a></li>
+				<li><a href="laglista.html" >Lag</a></li>
+				<li><a href="artistlista.html" >Artister</a></li>
+				<li><a href="info.html" >Information</a></li>
+			</ul>
+		</div>
+		<!-- /panel -->
+		
+		
+			
+			
+		
+
+		<style>
+			#df-dragonhead .ui-icon {
+				background:  url(img/icon_Dragon_Head_32.png) 50% 50% no-repeat transparent;  background-size: 22px 27px;
+			}
+			.ui-icon-df-beer {
+				background-image: url("img/beer-mug.png");
+				background-size: 22px 27px;
+			}
+			
+			.nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+			/*
+			.nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+			.nav-glyphish-example2 .ui-btn .ui-icon { width: 300px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+			*/
+			#beer .ui-icon { background:  url(img/beer-mug.png) 50% 50% no-repeat transparent;  background-size: 22px 27px; width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important;}
+			#df-logo .ui-icon {background:  url(img/df_logo.jpg) 50% 50% no-repeat transparent;  background-size: 500px 27px; width: 500px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important;}
+		
+			#mybars {
+				height: 32px;
+				width: 32px;
+			}
+		
+		</style>
 		<div data-role="header" >
+			<img src="img/df_logo.jpg" width="100%" height=""/>
 			<div data-role="navbar">
 				<ul>
-					<li style="width:20%;">
-						<a style="background: transparent;" href="index.html" data-iconpos="none" ><img data-theme="c" alt="" src="img/icon_Dragon_Head_32.png"></a>
-					</li>
-					<li style="width:80%; text-align: center;"><h3>Program</h3></li>
+					<li style="width: 20%"><a href="#menuDiv" data-role="button" data-icon="bars" data-iconpos="notext" data-inline="true"></a></li>
+					<li style="width: 80%"><a href="#"></a></li>
 				</ul>
 			</div>
-			<!-- /navbar -->
 		</div>
 		<!-- /header -->
 
 		<div data-role="content">
-			<a data-role="button" data-icon="arrow-l" href="#" data-rel="back" data-inline="true">Tillbaka</a>
-			<h1>Program sidan2</h1>
-			<ul id="programList" data-role="listview" data-filter="false"></ul>
-
+			<!--  <div class="nav-glyphish-example">
+			    <div data-role="navbar" class="nav-glyphish-example" data-grid="d">
+				    <ul>
+				        <li><a href="#" id="beer" data-icon="custom" data-role="button"></a></li>
+				        <li><a href="index.html" id="df-logo" data-icon="custom"></a></li>
+				    </ul>
+			    </div>
+		    </div>
+		
+			<a id="mybars" href="#mypanel" data-role="button" data-icon="bars" data-iconpos="notext" ></a>
+			-->
+			<!-- <a  href="#mypanel" data-role="button" data-icon="bars" data-iconpos="notext" data-shadow="false" ></a><br> -->
+			<!-- <a data-role="button" href="#mypanel" data-iconpos="none" ><img src="img/icon_Dragon_Head_32.png"></a> -->
+			<!-- <a href="#mypanel" id="df-dragonhead" data-role="button" data-icon="custom" data-inline="true"></a>
+			<a href="#mypanel" data-role="button" data-icon="df-beer" data-inline="true"></a>
+			 -->
+			 
+			<p id="collPrograms"></p>
+			
 		</div>
 		<!-- /content -->
 
@@ -46,10 +102,17 @@
 		
 		<script>
 		
-			var serviceURL = "http://tagquiz.mathiasberg.se/testjquery/www/";
-			var proglist;
-			var mainloaded = false;
+			var serviceURL = "http://tagquiz.mathiasberg.se/df/";
+			var prgArr;
+			var mainloaded = true;
 
+
+			var prgObj =  {"id":86,"artistId":86,"title":"Lilla drakloppet","beskrivning":"Lilla drakloppet beskrivning","dag":"2013-08-07","start":"17:30:00","stop":"20:00:00"};
+			var prgObj2 =  {"id":100,"artistId":10,"title":"Stora drakloppet","beskrivning":"Stora drakloppet beskrivning2","dag":"2013-08-07","start":"18:30:00","stop":"21:00:00"};
+			var prgObj3 =  {"id":101,"artistId":12,"title":"Andra dagen loppet","beskrivning":"Andra dagen loppet beskrivning2","dag":"2013-08-08","start":"11:30:00","stop":"21:00:00"};
+			var prgObj4 =  {"id":102,"artistId":12,"title":"Tredje dagen loppet","beskrivning":"Tredje dagen loppet beskrivning2","dag":"2013-08-09","start":"12:30:00","stop":"21:00:00"};
+			prgArr = [prgObj, prgObj2, prgObj3, prgObj4];
+			
 			//Start loading spinner. sets to hide when ajax is finished
 			//Triggered on the "toPage" after the transition animation has completed.
 			//see http://jquerymobile.com/demos/1.2.1/docs/api/events.html
@@ -62,19 +125,30 @@
 
 			});
 
+			/*
+			pagebeforecreate, you can manipulate markup before jQuery Mobile's default widgets are auto-initialized. 
+			For example, say you want to add data attributes via JavaScript instead of in the HTML source, this is the event you'd use.
+			*/
+			$( "#programListPage" ).on( "pagebeforecreate", function( event ) {
+				console.log('pagebeforecreate');
+				//ajaxCallPrograms();
+				pushToList();
+				$.mobile.loading('hide');
+				});
 			
 			//Triggered on the page being initialized, after initialization occurs. Dokument is ready
-			$('#programListPage').bind('pageinit', function(event) {
+			/*$('#programListPage').bind('pageshow', function(event) {
 				console.log('pageinit');
-				ajaxCallPrograms();
-
-			});
+				//ajaxCallPrograms();
+				pushToList();
+				$.mobile.loading('hide');
+			});*/
 
 			//Ajax call. populate program list
 			function ajaxCallPrograms() {
 				console.log('ajaxCallPrograms');
 				$.getJSON(serviceURL + 'testjq.php', function(data) {
-					proglist = data;
+					prgArr = data;
 					mainloaded = true;
 					$.mobile.loading('hide');
 					//populerar li element
@@ -86,14 +160,39 @@
 			function pushToList() {
 				console.log('pushToList');
 				$('#programList li').remove();
-				$.each(proglist,
-						function(index, program) {
-							$('#programList').append(
-									'<li><a href="programinfo.html?id='
-											+ program.questionId + '">'
-											+ '<h4>' + program.question
-											+ '</h4>' + '</a></li>');
-						});
+				
+				var prevStartDay = ";"
+				$.each(prgArr, function(index, prg) {
+					var startDay = prg.dag;//prg.start.split(" ")[0];
+					var startTime = prg.start;//prg.start.split(" ")[1];
+					if(startDay == prevStartDay){
+						//adda till förra div
+						console.log("Samma dag " + startDay + '-list');
+						var $newLiEl = $('<li><a href="index.html"><h4>'+startTime+' ' +prg.title+ '</h4><p>'+prg.beskrivning+'</p></a></li>');
+						$('#' + startDay + '-list').append($newLiEl);
+					}else{
+						//skapa ny div
+						var $newdiv = $('<div id="'+ startDay + '" data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u"> </div>');
+						var $newHel = $('<h2>'+startDay+'</h2>');
+						$newdiv.append($newHel);
+						
+						var $newUlEl = $('<ul id="'+ startDay + '-list" data-role="listview" data-theme="d" data-divider-theme="d" data-inset="true"></ul>');
+						$newdiv.append($newUlEl);
+						
+						
+						var $newLiEl = $('<li><a href="index.html"><h4>'+startTime+' ' +prg.title+ '</h4><p>'+prg.beskrivning+'</p></a></li>');
+						$newUlEl.append($newLiEl);
+						
+						$('#collPrograms').append($newdiv);
+					}
+					
+					prevStartDay = prg.dag;//prg.start.split(" ")[0];
+					console.log("prevStartDay " + prevStartDay);
+					
+					
+				});
+				
+				
 				$('#programList').listview('refresh');
 
 			}
