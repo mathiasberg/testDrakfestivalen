@@ -6,8 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+
 <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+<link rel="stylesheet" href="css/themes/df-theme.min.css" />
 <link rel="stylesheet" href="css/style.css" />
+
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/jquery.mobile-1.3.1.min.js"></script>
 
@@ -16,59 +19,26 @@
 
 	<div id="programListPage" data-role="page" data-theme="c"  data-content-theme="c">
 
-		<div data-role="panel" id="menuDiv"  data-animate="true">
+		<div data-role="panel" id="menuDiv"  data-animate="true" data-theme="d" >
 			<!-- panel content goes here -->
-			<ul data-role='listview' data-icon="false">
-				<li data-theme='a'>Drakfestivalen meny</li>
-				<li><a href="index.html" >Start</a></li>
-				<li><a href="program.html" >Program</a></li>
-				<li><a href="drakkampen_startlista.html" >Startlista</a></li>
-				<li><a href="drakkampen_resultat.html" >Resultat</a></li>
-				<li><a href="laglista.html" >Lag</a></li>
-				<li><a href="artistlista.html" >Artister</a></li>
-				<li><a href="info.html" >Information</a></li>
+			<ul data-role='listview' data-theme="d">
+				<li data-icon="false" style="height: 3em;">&nbsp;</li>
+				<li data-icon="false"><a href="index.html" >Program</a></li>
+				<li data-icon="false"><a href="info.html" >Information</a></li>
+				<li data-role="list-divider" data-theme="d"><h3>Drakbåtskampen</h3></li>
+				<li data-icon="false"><a href="drakkampen_startlista.html" >Startlista</a></li>
+				<li data-icon="false"><a href="drakkampen_resultat.html" >Resultat</a></li>
+				<li data-icon="false"><a href="laglista.html" >Lag</a></li>
+				
 			</ul>
 		</div>
 		<!-- /panel -->
 		
-		
-			
-			
-		
-
-		<style>
-			#df-dragonhead .ui-icon {
-				background:  url(img/icon_Dragon_Head_32.png) 50% 50% no-repeat transparent;  background-size: 22px 27px;
-			}
-			.ui-icon-df-beer {
-				background-image: url("img/beer-mug.png");
-				background-size: 22px 27px;
-			}
-			
-			.nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
-			/*
-			.nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
-			.nav-glyphish-example2 .ui-btn .ui-icon { width: 300px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
-			*/
-			#beer .ui-icon { background:  url(img/beer-mug.png) 50% 50% no-repeat transparent;  background-size: 22px 27px; width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important;}
-			#df-logo .ui-icon {background:  url(img/df_logo.jpg) 50% 50% no-repeat transparent;  background-size: 500px 27px; width: 500px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important;}
-		
-			#mybars {
-				height: 32px;
-				width: 32px;
-			}
-		
-		</style>
-		<div data-role="header" >
-			<img src="img/df_logo.jpg" width="100%" height=""/>
-			<div data-role="navbar">
-				<ul>
-					<li style="width: 20%"><a href="#menuDiv" data-role="button" data-icon="bars" data-iconpos="notext" data-inline="true"></a></li>
-					<li style="width: 80%"><a href="#"></a></li>
-				</ul>
-			</div>
-		</div>
-		<!-- /header -->
+		<div data-role="header" style="height: 3em;" data-theme="a">
+        	<h1>Drakfestivalen</h1>
+        	<a href="#menuDiv" class="my-header-btn" data-icon="myapp-bars" data-iconpos="notext" data-shadow="false" data-corners="false" data-iconshadow="false">Menu</a>
+    	</div>
+    	<!-- /header -->
 
 		<div data-role="content">
 			<!--  <div class="nav-glyphish-example">
@@ -90,7 +60,6 @@
 			 
 			<p id="collPrograms"></p>
 			
-
 		</div>
 		<!-- /content -->
 
@@ -103,28 +72,36 @@
 		
 		<script>
 		
-			var serviceURL = "http://tagquiz.mathiasberg.se/df/";
+			var serviceURL = "http://91.123.198.48:8080/testdf/df/program";
 			var prgArr;
 			var mainloaded = true;
-
 
 
 			var prgObj =  {"id":86,"artistId":86,"title":"Lilla drakloppet","beskrivning":"Lilla drakloppet beskrivning","dag":"2013-08-07","start":"17:30:00","stop":"20:00:00"};
 			var prgObj2 =  {"id":100,"artistId":10,"title":"Stora drakloppet","beskrivning":"Stora drakloppet beskrivning2","dag":"2013-08-07","start":"18:30:00","stop":"21:00:00"};
 			var prgObj3 =  {"id":101,"artistId":12,"title":"Andra dagen loppet","beskrivning":"Andra dagen loppet beskrivning2","dag":"2013-08-08","start":"11:30:00","stop":"21:00:00"};
 			var prgObj4 =  {"id":102,"artistId":12,"title":"Tredje dagen loppet","beskrivning":"Tredje dagen loppet beskrivning2","dag":"2013-08-09","start":"12:30:00","stop":"21:00:00"};
-			prgArr = [prgObj, prgObj2, prgObj3, prgObj4];
+			//prgArr = [prgObj, prgObj2, prgObj3, prgObj4];
 			
 			//Start loading spinner. sets to hide when ajax is finished
 			//Triggered on the "toPage" after the transition animation has completed.
 			//see http://jquerymobile.com/demos/1.2.1/docs/api/events.html
-
+			
+			//Triggered on the page being initialized, after initialization occurs. Dokument is ready
 			$('#programListPage').on('pageshow', function(event) { //Workaround to show page loading on initial page load
 				console.log('pageshow');
-				if (!mainloaded) {
+				/*if (!mainloaded) {
 					$.mobile.loading('show');
 				}
-
+				*/
+			  	// load data
+				//populerar li element
+				/*var page = $(this);
+				pushToList();
+			  	page.trigger('pagecreate');
+			  	$("programList").listview('refresh');
+				*/
+				ajaxCallPrograms();
 			});
 
 			/*
@@ -134,37 +111,40 @@
 			$( "#programListPage" ).on( "pagebeforecreate", function( event ) {
 				console.log('pagebeforecreate');
 				//ajaxCallPrograms();
-				pushToList();
-				$.mobile.loading('hide');
-				});
-			
-			//Triggered on the page being initialized, after initialization occurs. Dokument is ready
-			/*$('#programListPage').bind('pageshow', function(event) {
-				console.log('pageinit');
-				//ajaxCallPrograms();
-
-				pushToList();
-				$.mobile.loading('hide');
-			});*/
-
 			});
+			
 
 			//Ajax call. populate program list
 			function ajaxCallPrograms() {
 				console.log('ajaxCallPrograms');
-				$.getJSON(serviceURL + 'testjq.php', function(data) {
+				$.mobile.loading('show');
+				/*$.getJSON(serviceURL, function(data) {
 					prgArr = data;
 					mainloaded = true;
 					$.mobile.loading('hide');
-					//populerar li element
-					pushToList();
+					
+				});*/
+				
+				$.getJSON(serviceURL )
+				.done(function( data ) {
+				  console.log( "AJAX Call done! ");
+				  pushToList(data);
+				})
+				.fail(function( jqxhr, textStatus, error ) {
+					var err = textStatus + ', ' + error;
+					console.log( "Request Failed: " + err);
+					alert("Ooops, detta var ju onödigt nödigt...\n " + err);
+				})
+				.always(function() { console.log( "complete" ); 
+					$.mobile.loading('hide');
 				});
+				
+				
 			}
-
 			//Populate the li list element
-			function pushToList() {
+			function pushToList(data) {
 				console.log('pushToList');
-				$('#programList li').remove();
+				prgArr = data;
 				
 				var prevStartDay = ";"
 				$.each(prgArr, function(index, prg) {
@@ -193,13 +173,10 @@
 					
 					prevStartDay = prg.dag;//prg.start.split(" ")[0];
 					console.log("prevStartDay " + prevStartDay);
-					
-					
 				});
-				
-				
-				$('#programList').listview('refresh');
-
+				//call pagecreate event to reload html with widgets style
+				$( "#programListPage" ).trigger('pagecreate');
+				$.mobile.loading('hide');
 			}
 		</script>
 		
